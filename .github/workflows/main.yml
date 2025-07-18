@@ -1,0 +1,32 @@
+name: 
+  Trigger Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      homedrive:
+        description: 'Some discription'
+        required: true
+      logLevel:
+        description: 'Log Level'
+        default: warning
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      tag:
+        description: 'Apply a tag after successful test run'
+        required: true
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        required: true
+        type: environment
+
+jobs:
+  Echo:
+    runs-on: ubuntu-latest
+    steps:
+      - run : echo 'Test trigger'
+  
