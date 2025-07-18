@@ -1,0 +1,17 @@
+name: First Workflow
+
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
+
+jobs:
+  FirstJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - run: |
+          echo "The repository ${{github.repository}} contains the following files:" tree
+    
