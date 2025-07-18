@@ -28,5 +28,13 @@ jobs:
   Echo:
     runs-on: ubuntu-latest
     steps:
-      - run : echo 'Test trigger'
+      - name: Workflow Inputs 
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "Homedrive: ${{ inputs.homedrive }}"
+          echo "Environment ${{ inputs.environment }}"
+          echo "Log level: ${{ inputs.logLevel }}"
+          echo "Tag source: ${{ toJSON(inputs.tag) }}"
+          
+      
   
